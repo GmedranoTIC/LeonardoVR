@@ -3,23 +3,18 @@
 <body>
 	 <div id="h5p-container"></div>
 	
-	<script src="https://cdn.jsdelivr.net/npm/h5p-standalone@latest/dist/main.bundle.js"></script>
+	<script type="text/javascript" src="h5p-player/main.bundle.js" charset="UTF-8"></script>
 	
 	<script>
-	  document.addEventListener('DOMContentLoaded', function () {
-	
-	    const options = {
-	      h5pJsonPath: '/leonardoVR', // Path to your self-hosted H5P content directory
-	      frameJs: 'https://cdn.jsdelivr.net/npm/h5p-standalone@latest/dist/frame.bundle.js',
-	      frameCss: 'https://cdn.jsdelivr.net/npm/h5p-standalone@latest/dist/styles/h5p.css',
-	    };
-	
-	    const el = document.getElementById('h5p-container');
-	
-	    // H5PStandalone is globally available when main.bundle.js is included via a script tag
-	    new H5PStandalone.H5P(el, options);
-	
-	  });
+	 document.addEventListener('DOMContentLoaded', function () {
+  const el = document.getElementById('h5p-container');
+  const options = {
+    h5pJsonPath: 'leonardoVR', // Path to the extracted H5P content
+    frameJs: 'h5p-player/frame.bundle.js', // Path to player's frame.bundle.js
+    frameCss: 'h5p-player/styles/h5p.css', // Path to player's h5p.css
+  };
+  new H5PStandalone.H5P(el, options);
+});
 	</script>
 
 </body>
