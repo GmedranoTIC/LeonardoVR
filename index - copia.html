@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Enlaces a los estilos del reproductor standalone -->
+  <link rel="stylesheet" href="/h5p-player/styles/h5p.css">
+  <script src="/h5p-player/frame.bundle.js"></script>
+</head>
+<body>
+  <div id="h5p-container"></div>
+
+  <script type="text/javascript">
+    const { H5P } = H5PStandalone;
+    new H5P(document.getElementById('h5p-container'), 'leonardoVR', {
+      h5pJsonPath: '/leonardoVR',
+      frameJs: '/h5p-player/frame.bundle.js',
+      frameCss: '/h5p-player/styles/h5p.css'
+    });
+  </script>
+</body>
+</html>
