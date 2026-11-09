@@ -27,11 +27,18 @@
     <div id="tour-container"></div>
 
     <!-- Script de H5P Standalone v3 -->
-    <script src="https://jsdelivr.net"></script>
+    <script src="./h5p-player/main.bundle.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", async function () {
+         window.addEventListener('load', async function () {
             const el = document.getElementById('tour-container');
             
+            // Detectamos cómo expone el objeto la librería
+            const H5PConstructor = window.H5PStandalone ? window.H5PStandalone.H5P : window.H5P;
+
+            if (!H5PConstructor) {
+                console.error("No se encontró el constructor de H5P. Revisa que ./h5p-player/main.bundle.js exista.");
+                return;
+            }
             const options = {
                 id: 'tour-360-interactive',
                 // Ruta a la carpeta que contiene el h5p.json
@@ -39,6 +46,8 @@
                 // Ruta global interna para las librerías necesarias del tour
                 librariesPath: './leonardoVR/libraries', 
                 frameClickReceived: false
+                frameJs: './h5p-player/frame.bundle.js',
+                frameCss: './h5p-player/h5p.css'
             };
 
             try {
