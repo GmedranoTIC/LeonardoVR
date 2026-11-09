@@ -1,21 +1,55 @@
-<html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leonardo 360 de GmedranoTIC</title>
+    <!-- Estilos de H5P Standalone v3 -->
+    <link rel="stylesheet" href="https://jsdelivr.net" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            font-family: sans-serif;
+        }
+        /* Contenedor responsivo para el Tour 360 */
+        #tour-container {
+            width: 100vw;
+            height: 100vh;
+            max-width: 100%;
+        }
+    </style>
 </head>
 <body>
-	 <div id="h5p-container"></div>
-	
-	<script type="text/javascript" src="h5p-player/main.bundle.js" charset="UTF-8"></script>
-	
-	<script>
-	 document.addEventListener('DOMContentLoaded', function () {
-  const el = document.getElementById('h5p-container');
-  const options = {
-    h5pJsonPath: 'leonardoVR', // Path to the extracted H5P content
-    frameJs: 'h5p-player/frame.bundle.js', // Path to player's frame.bundle.js
-    frameCss: 'h5p-player/styles/h5p.css', // Path to player's h5p.css
-  };
-  new H5PStandalone.H5P(el, options);
-});
-	</script>
 
+    <!-- El tour ocupará toda la pantalla para una mejor experiencia inmersiva -->
+    <div id="tour-container"></div>
+
+    <!-- Script de H5P Standalone v3 -->
+    <script src="https://jsdelivr.net"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", async function () {
+            const el = document.getElementById('tour-container');
+            
+            const options = {
+                id: 'tour-360-interactive',
+                // Ruta a la carpeta que contiene el h5p.json
+                h5pJsonPath: './leonardoVR',
+                // Ruta global interna para las librerías necesarias del tour
+                librariesPath: './leonardoVR/libraries', 
+                frameClickReceived: false
+            };
+
+            try {
+                // Inicialización con la sintaxis de la versión v3
+                await new H5PStandalone.H5P(el, options);
+                console.log('Tour 360 cargado correctamente.');
+            } catch (error) {
+                console.error('Error al cargar el Tour 360:', error);
+            }
+        });
+    </script>
 </body>
 </html>
+
